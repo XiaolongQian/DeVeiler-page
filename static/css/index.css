@@ -1,5 +1,36 @@
 body {
   font-family: 'Noto Sans', sans-serif;
+  color: #20242a;
+  background: #fbfbf8;
+}
+
+.navbar {
+  border-bottom: 1px solid #ece8dc;
+  background: rgba(251, 251, 248, 0.96);
+}
+
+.navbar-start {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.navbar-item {
+  color: #343a40;
+}
+
+.publication-nav-title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+}
+
+.hero {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 247, 242, 0.95)),
+    url("../images/Teaser.png") center 18% / cover no-repeat;
+}
+
+.hero-body {
+  padding-bottom: 2.5rem;
 }
 
 
@@ -11,6 +42,14 @@ body {
 .link-block a {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.publication-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: center;
 }
 
 .dnerf {
@@ -49,6 +88,8 @@ body {
 
 .publication-title {
     font-family: 'Google Sans', sans-serif;
+    line-height: 1.08;
+    margin-top: 0.75rem;
 }
 
 .publication-authors {
@@ -56,9 +97,16 @@ body {
 }
 
 .publication-venue {
-    color: #555;
-    width: fit-content;
-    font-weight: bold;
+    background: #fff3cd;
+    border: 1px solid #f2d06b;
+    border-radius: 999px;
+    color: #7a5300;
+    display: inline-flex;
+    font-family: 'Google Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    padding: 0.4rem 0.9rem;
 }
 
 .publication-awards {
@@ -80,6 +128,63 @@ body {
 
 .author-block {
   display: inline-block;
+}
+
+.publication-summary {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 1.5rem auto 0;
+  max-width: 960px;
+  text-align: left;
+}
+
+.summary-item {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #e8e2d6;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(34, 38, 44, 0.05);
+  padding: 1rem;
+}
+
+.summary-label {
+  color: #9b3d1c;
+  display: block;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.summary-text {
+  color: #343a40;
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.publication-body {
+  background: #ffffff;
+}
+
+.publication-body .columns {
+  margin-bottom: 1.5rem;
+}
+
+.project-figure {
+  border: 1px solid #ebe7dc;
+  border-radius: 8px;
+  box-shadow: 0 14px 35px rgba(20, 24, 31, 0.06);
+  height: auto;
+  width: 100%;
+}
+
+figcaption {
+  color: #4c5562;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-top: 0.7rem;
 }
 
 .publication-banner img {
@@ -154,4 +259,18 @@ body {
 }
 #interpolation-image-wrapper img {
   border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .publication-title {
+    font-size: 2.2rem !important;
+  }
+
+  .publication-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-body {
+    padding-top: 2.5rem;
+  }
 }

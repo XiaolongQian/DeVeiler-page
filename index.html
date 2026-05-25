@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="description"
         content="Learning Latent Transmission and Glare Maps for Lens Veiling Glare Removal">
-  <meta name="keywords" content="Veiling Glare, Lens Aberration">
+  <meta name="keywords" content="Veiling Glare, Lens Aberration, Image Restoration, Computational Photography, CVPR 2026">
+  <meta name="author" content="Xiaolong Qian, Qi Jiang, Lei Sun, Zongxi Yu, Kailun Yang, Peixuan Wu, Jiacheng Zhou, Yao Gao, Yaoguang Ma, Ming-Hsuan Yang, Kaiwei Wang">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Learning Latent Transmission and Glare Maps for Lens Veiling Glare Removal</title>
+  <meta property="og:title" content="Learning Latent Transmission and Glare Maps for Lens Veiling Glare Removal">
+  <meta property="og:description" content="CVPR 2026 Highlight project page for VeilGen and DeVeiler.">
+  <meta property="og:image" content="./static/images/Teaser.png">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -30,6 +35,9 @@
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
+    <a class="navbar-item publication-nav-title" href="#">
+      DeVeiler
+    </a>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -37,7 +45,11 @@
     </a>
   </div>
   <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+    <div class="navbar-start">
+      <a class="navbar-item" href="#abstract">Abstract</a>
+      <a class="navbar-item" href="#method">Method</a>
+      <a class="navbar-item" href="#results">Results</a>
+      <a class="navbar-item" href="#BibTeX">BibTeX</a>
     </div>
 
   </div>
@@ -49,6 +61,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
+          <div class="publication-venue">CVPR 2026 Highlight</div>
           <h1 class="title is-1 publication-title">Learning Latent Transmission and Glare Maps for Lens Veiling Glare Removal</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -115,7 +128,31 @@
                       <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
-                  </a>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#BibTeX"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-quote-right"></i>
+                  </span>
+                  <span>BibTeX</span>
+                </a>
+              </span>
+            </div>
+          </div>
+          <div class="publication-summary">
+            <div class="summary-item">
+              <span class="summary-label">Problem</span>
+              <span class="summary-text">Compound degradation from residual aberrations and veiling glare in compact optics.</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">VeilGen</span>
+              <span class="summary-text">Learns latent optical transmission and glare maps for realistic paired data generation.</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">DeVeiler</span>
+              <span class="summary-text">Uses learned physical priors to restore images from challenging real-world systems.</span>
             </div>
           </div>
         </div>
@@ -124,7 +161,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section publication-body">
   <div class="container is-max-desktop">
     <!-- Teaser Figure -->
     <div class="columns is-centered">
@@ -132,7 +169,7 @@
         <figure class="content">
           <img src="./static/images/Teaser.png"
                alt="Formation of aberration and veiling glare plus restoration comparison"
-               style="width: 100%; height: auto;">
+               class="project-figure">
           <figcaption class="has-text-left">
             Compact optical systems suffer from residual aberrations and veiling glare (a), caused by design-induced blur and stray-light scattering from non-ideal surfaces and coatings. (b) Existing methods fail under this compound degradation: a Computational Aberration Correction (CAC) model retrained on aberration-only data fails on unseen veiling glare, while a cascaded state-of-the-art dehazing model introduces inconsistent artifacts. Our DeVeiler restores a clean image by jointly correcting the compound degradations.
           </figcaption>
@@ -142,7 +179,7 @@
     <!--/ Teaser Figure -->
 
     <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered" id="abstract">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
@@ -155,7 +192,7 @@
     <!--/ Abstract. -->
 
     <!-- Method. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered" id="method">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Method</h2>
         <div class="content has-text-justified">
@@ -170,7 +207,7 @@
         <figure class="content">
           <img src="./static/images/VeilGen.png"
                alt="Architecture of VeilGen"
-               style="width: 100%; height: auto;">
+               class="project-figure">
           <figcaption class="has-text-left">
             <strong>Overall architecture of the proposed VeilGen.</strong> In Stage I, VeilGen is trained to synthesize compound degradations by using a Latent Optical Transmission and Glare Map Predictor (LOTGMP) to estimate latent maps. These maps then guide the diffusion process via the Veiling Glare Imposition Module (VGIM). <i>Z</i><sub>de</sub><sup>T</sup> denotes the target degraded latent representation, <i>Z</i><sub>t</sub> denotes the noisy latent representation at timestep <i>t</i> of the forward diffusion process, and <i>Z</i><sub>null</sub> represents an all-zero latent representation. txt<sup>S/T</sup> denotes the text prompts for the source and target domains, respectively.
           </figcaption>
@@ -182,7 +219,7 @@
         <figure class="content">
           <img src="./static/images/DeiVeiler.png"
                alt="Distillation and restoration networks in DeVeiler"
-               style="width: 100%; height: auto;">
+               class="project-figure">
           <figcaption class="has-text-left">
             <strong>The distillation and restoration networks.</strong> (a) The Distilled Degradation Net (DDN), trained in Stage II, models the forward degradation, using VGIM to apply the veiling glare prior. (b) The DeVeiler, trained in Stage III, is designed to reverse this process: it first removes the veiling glare using the Veiling Glare Compensation Module (VGCM), and then feeds the intermediate result into its main bottleneck to correct the aberrations.
           </figcaption>
@@ -192,12 +229,12 @@
     <!--/ Method. -->
 
     <!-- Results. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered" id="results">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Results</h2>
         <div class="content has-text-justified">
           <p>
-
+            DeVeiler consistently restores contrast, suppresses spatially varying veiling glare, and preserves scene details across real-world compact optical systems. The qualitative comparisons below show representative results on single-lens (SL) and metalens-related (MRL) captures under compound degradation.
           </p>
         </div>
       </div>
@@ -207,7 +244,7 @@
         <figure class="content">
           <img src="./static/images/github_page_results_sl.png"
                alt="Visual results on Realworld-Compound domain captured by the SL system"
-               style="width: 100%; height: auto;">
+               class="project-figure">
           <figcaption class="has-text-centered">
             <strong>Visual results on Realworld-Compound domain captured by the SL system.</strong>
           </figcaption>
@@ -219,7 +256,7 @@
         <figure class="content">
           <img src="./static/images/github_page_results_mrl.png"
                alt="Visual results on Realworld-Compound domain captured by the MRL system"
-               style="width: 100%; height: auto;">
+               class="project-figure">
           <figcaption class="has-text-centered">
             <strong>Visual results on Realworld-Compound domain captured by the MRL system.</strong>
           </figcaption>
@@ -234,14 +271,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@misc{qian2025learninglatenttransmissionglare,
-      title={Learning Latent Transmission and Glare Maps for Lens Veiling Glare Removal}, 
-      author={Xiaolong Qian and Qi Jiang and Lei Sun and Zongxi Yu and Kailun Yang and Peixuan Wu and Jiacheng Zhou and Yao Gao and Yaoguang Ma and Ming-Hsuan Yang and Kaiwei Wang},
-      year={2025},
-      eprint={2511.17353},
-      archivePrefix={arXiv},
-      primaryClass={eess.IV},
-      url={https://arxiv.org/abs/2511.17353}, 
+    <pre><code>@inproceedings{qian2026learning,
+  title={Learning Latent Transmission and Glare Maps for Lens Veiling Glare Removal},
+  author={Qian, Xiaolong and Jiang, Qi and Sun, Lei and Yu, Zongxi and Yang, Kailun and Wu, Peixuan and Zhou, Jiacheng and Gao, Yao and Ma, Yaoguang and Yang, Ming-Hsuan and Wang, Kaiwei},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2026}
 }</code></pre>
   </div>
 </section>
